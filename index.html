@@ -17,7 +17,6 @@
     button { background: #007bff; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem; }
     button:hover { background: #0069d9; }
     .note { font-size: 0.9rem; color: #888; }
-    .success-message { display: none; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -31,13 +30,14 @@
       <li>Ukázky jednoduchého nahrávání na Zoom, WhatsApp, internetové bankovnictví, e-shopy</li>
     </ul>
     <p class="note">Sleva 20 % pro první lekci při registraci nyní!</p>
-    <div class="success-message" id="successMessage">
-      Děkujeme za registraci! Ozveme se vám co nejdříve.<br>
-      <a href="/">Zpět na úvod</a>
-    </div>
+
     <!-- Netlify Forms integration -->
-    <form name="senior-help" method="POST" data-netlify="true" onsubmit="showSuccess(); return false;">
+    <form name="senior-help" method="POST" data-netlify="true" action="/thank-you.html">
       <input type="hidden" name="form-name" value="senior-help">
+      <!-- honeypot field to reduce spam -->
+      <p style="display:none">
+        <label>Nevyplňujte toto pole: <input name="bot-field"></label>
+      </p>
       <div class="form-group">
         <label for="name">Jméno a příjmení:</label>
         <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
@@ -61,22 +61,5 @@
       <button type="submit">Rezervovat lekci</button>
     </form>
   </div>
-  <script>
-    function showSuccess() {
-      document.querySelector('form').style.display = 'none';
-      document.getElementById('successMessage').style.display = 'block';
-    }
-  </script>
-  <form name="contact" netlify>
-    <p>
-      <label>Name <input type="text" name="name" /></label>
-    </p>
-    <p>
-      <label>Email <input type="email" name="email" /></label>
-    </p>
-    <p>
-      <button type="submit">Send</button>
-    </p>
-  </form>
 </body>
 </html>
