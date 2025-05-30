@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zážitková Digitální Pomoc pro Seniory</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 50px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h1 { font-size: 1.8rem; color: #333; margin-bottom: 10px; }
+    p { color: #555; line-height: 1.6; }
+    ul { margin: 15px 0; padding-left: 20px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; color: #444; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    textarea { resize: vertical; height: 100px; }
+    button { background: #007bff; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #0069d9; }
+    .note { font-size: 0.9rem; color: #888; }
+    .success-message { display: none; padding: 20px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Zážitková Digitální Pomoc pro Seniory</h1>
+    <p>Pomáháme seniorům s bezstarostným ovládáním počítače, telefonu a online služeb. Naše osobní lekce zmírní digitální stres, posílí sebevědomí a propojí je se světem, i když mají rodinu daleko.</p>
+    <ul>
+      <li>Jednorázová 60minutová osobní lekce (doma nebo online)</li>
+      <li>Mobilní pomoc na zavolání (WhatsApp, telefon)</li>
+      <li>Výhodné balíčky lekcí – sleva při předplatném</li>
+      <li>Ukázky jednoduchého nahrávání na Zoom, WhatsApp, internetové bankovnictví, e-shopy</li>
+    </ul>
+    <p class="note">Sleva 20 % pro první lekci při registraci nyní!</p>
+    <div class="success-message" id="successMessage">
+      Děkujeme za registraci! Ozveme se vám co nejdříve.<br>
+      <a href="/">Zpět na úvod</a>
+    </div>
+    <!-- Netlify Forms integration -->
+    <form name="senior-help" method="POST" data-netlify="true" onsubmit="showSuccess(); return false;">
+      <input type="hidden" name="form-name" value="senior-help">
+      <div class="form-group">
+        <label for="name">Jméno a příjmení:</label>
+        <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="jmeno@priklad.cz" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefon:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+420 123 456 789" required>
+      </div>
+      <div class="form-group">
+        <label for="location">Lokalita:</label>
+        <input type="text" id="location" name="location" placeholder="Město nebo PSČ" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Vaše potřeba:</label>
+        <textarea id="message" name="message" placeholder="Co byste se chtěli naučit?" required></textarea>
+      </div>
+      <button type="submit">Rezervovat lekci</button>
+    </form>
+  </div>
+  <script>
+    function showSuccess() {
+      document.querySelector('form').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
+    }
+  </script>
+  <form name="contact" netlify>
+    <p>
+      <label>Name <input type="text" name="name" /></label>
+    </p>
+    <p>
+      <label>Email <input type="email" name="email" /></label>
+    </p>
+    <p>
+      <button type="submit">Send</button>
+    </p>
+  </form>
+</body>
+</html>
